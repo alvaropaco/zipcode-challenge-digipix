@@ -10,14 +10,17 @@ manager = Manager(app)
 Swagger(app)
 CONFIG = {'AMQP_URI': "amqp://guest:guest@localhost:5672"}
 
+
 def zipcode_service():
-  pass
+    pass
+
 
 class CustomServer(Server):
-  def __call__(self, app, *args, **kwargs):
-    zipcode_service()
-    
-    return Server.__call__(self, app, *args, **kwargs)
+    def __call__(self, app, *args, **kwargs):
+        zipcode_service()
+
+        return Server.__call__(self, app, *args, **kwargs)
+
 
 @app.route('/zipcode', methods=['GET'])
 def zipcode():
@@ -50,8 +53,9 @@ def zipcode():
         description: Please wait the calculation, you'll receive an email with results
     """
     with ClusterRpcProxy(CONFIG) as rpc:
-      result = rpc.zipcode.getZipcode("13560044")
-      return jsonify(result), 200
+        result = rpc.zipcode.getZipcode("13560044")
+        return jsonify(result), 200
+
 
 manager.add_command('runserver', CustomServer())
 
