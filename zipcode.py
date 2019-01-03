@@ -6,19 +6,12 @@ import requests
 
 default_baseurl = "https://service-homolog.digipix.com.br/v0b"
 baseurl = os.getenv('BASEURL', default_baseurl)
-
-def getResponse(self, qstring):
-    resp = requests.get(qstring)
+headers = {"Authorization": "Bearer {}".format(os.getenv('JWT'))}
+print(headers)
+def getResponse(qstring):
+    resp = requests.request('GET', qstring, headers=headers)
     
-    return json.dumps({
-        "state": "string",
-        "city": "string",
-        "neighborhood": "string",
-        "street": "string",
-        "ibge": "string",
-        "additional_info": "string",
-        "bairro": "string"
-    })
+    return resp.json()
 
 
 class ZipCodeService:
@@ -33,7 +26,8 @@ class ZipCodeService:
             if zipcode == None:
                 raise ValueError("Missing ZipCode")
             qstring = (baseurl + endpoint + zipcode)
-            return getResponse(self, qstring)
+            
+            return getResponse(qstring)
         except ValueError:
             print ValueError
             sys.exit()

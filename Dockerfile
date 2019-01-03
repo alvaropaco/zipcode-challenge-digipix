@@ -14,5 +14,4 @@ RUN pip install nose2[coverage_plugin]>=0.6.5
 ENV BASEURL "https://service-homolog.digipix.com.br/v0b"
 
 CMD [ "service", "rabbitmq-server", "start" ]
-ENTRYPOINT [ "nameko", "run", "zipcode" ]
 
