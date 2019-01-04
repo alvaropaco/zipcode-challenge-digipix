@@ -4,24 +4,8 @@ import requests
 import json
 
 from flask_script import Manager, Server
-#from jsonschema import validate
 
 from ..api import app
-
-responde_schema = {
-    "type": "object",
-    "properties": {
-         {
-            "state": {"type": "string"},
-            "city": {"type": "string"},
-            "neighborhood": {"type": "string"},
-            "street": {"type": "string"},
-            "ibge": {"type": "string"},
-            "additional_info": {"type": "string"},
-            "bairro": {"type": "string"}
-        }
-    }
-}
 
 
 class ZipCodeTestCase(unittest.TestCase):
@@ -36,7 +20,7 @@ class ZipCodeTestCase(unittest.TestCase):
 
     def test_zipcode_happy_flow(self):
         res = self.app.get('http://127.0.0.1:5000/zipcode?code=13560044')
-        
+
         assert resp.city == "São Carlos"
         assert resp.street == "Ruth Bloen Souto"
 
