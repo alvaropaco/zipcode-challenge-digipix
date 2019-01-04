@@ -17,6 +17,4 @@ ENV BASEURL "https://service-homolog.digipix.com.br/v0b"
 
 RUN [ "chmod", "+x", "/app/entrypoint.sh" ]
 
-ENTRYPOINT [ "/app/entrypoint.sh" ]
-
 CMD [ "python", "api.py", "runserver" ]

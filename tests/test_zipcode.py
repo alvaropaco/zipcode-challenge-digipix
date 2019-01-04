@@ -29,7 +29,7 @@ class ZipCodeTestCase(unittest.TestCase):
         res = self.app.get('http://127.0.0.1:5000/zipcode?code=')
 
         jsonObj = json.loads(res.data)
-        
+
         assert jsonObj['Message'] == "Not Found"
 
     def tearDown(self):
