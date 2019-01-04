@@ -7,8 +7,6 @@ import requests
 default_baseurl = "https://service-homolog.digipix.com.br/v0b"
 baseurl = os.getenv('BASEURL', default_baseurl)
 headers = {"Authorization": "Bearer {}".format(os.getenv('JWT'))}
-print(headers)
-
 
 def getResponse(qstring):
     resp = requests.request('GET', qstring, headers=headers)

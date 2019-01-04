@@ -29,31 +29,18 @@ def zipcode():
     This API is made with Flask, Flasgger and Nameko
     ---
     parameters:
-      - name: body
-        in: body
+      - name: zipcode
+        in: path
         required: true
         schema:
-          id: data
-          properties:
-            operation:
-              type: string
-              enum:
-                - sum
-                - mul
-                - sub
-                - div
-            email:
-              type: string
-            value:
-              type: integer
-            other:
-              type: integer
+          type: integer
+        description: location ZipCode
     responses:
       200:
-        description: Please wait the calculation, you'll receive an email with results
+        description: Location data
     """
     with ClusterRpcProxy(CONFIG) as rpc:
-        result = rpc.zipcode.getZipcode("13560044")
+        result = rpc.zipcode.getZipcode(request.args.get('code'))
         return jsonify(result), 200
 
 
