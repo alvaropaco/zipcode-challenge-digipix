@@ -16,7 +16,7 @@ Este serviço foi implementado em um contexto de arquitetura de Software de micr
 
 # Uso
 
-> Você deve exportar uma variável JWT com o valor do seu token de autorizaç~ao
+> Você deve exportar uma variável JWT com o valor do seu token de autorização
 
 `docker run -it -e JW$(echo $JWT) -p 5000:5000 digipix /app/entrypoint.sh` 
 
