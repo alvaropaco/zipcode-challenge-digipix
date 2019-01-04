@@ -6,7 +6,7 @@ O Objetivo deste projet e realizar a consulta atraves da API da Digipix a um CEP
 
 * Docker I/O
 
-# Intrdução
+# Introdução
 
 Este serviço foi implementado em um contexto de arquitetura de Software de microserviços em Python. É constituido de um servidor Flask para rotear as chamadas de API, um message broker RabbitMQ, e um mirco serviço em Nameko.
 
