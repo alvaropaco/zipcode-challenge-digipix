@@ -18,7 +18,7 @@ Este serviço foi implementado em um contexto de arquitetura de Software de micr
 
 > Você deve exportar uma variável JWT com o valor do seu token de autorização
 
-`docker run -it -e JW$(echo $JWT) -p 5000:5000 digipix /app/entrypoint.sh` 
+`docker run -it -e JW$=(echo $JWT) -p 5000:5000 digipix /app/entrypoint.sh` 
 
 O serviço será exposto na porta 5000 da máquina loca. Você pode consultar o endpoint do a chamada:
 
