@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 import unittest
 import requests
-from bson import json_util
 import json
-from jsonschema import validate
 
-from ../zipcode import ZipCodeService
-from nameko.testing.services import worker_factory
+from flask_script import Manager, Server
+#from jsonschema import validate
+
+from ..api import app
 
 responde_schema = {
     "type": "object",
@@ -27,16 +27,15 @@ responde_schema = {
 class ZipCodeTestCase(unittest.TestCase):
     """This class represents the zipcode test case"""
 
+    @pytest.mark.parametrize("runserver")
     def setUp(self):
         """Define test variables and initialize app."""
         self.app = app.test_client()
+        manager = Manager(app, with_default_commands=False)
+        manager.run()
 
     def test_zipcode_happy_flow(self):
-        # create worker with mock dependencies
-        service = worker_factory(ZipCodeService)
-
-        # add side effects to the mock proxy to the "maths" service
-        resp = service.zipcode_rpc.getZipcode("13560044")
+        res = self.app.get('http://127.0.0.1:5000/zipcode?code=13560044')
         
         assert resp.city == "São Carlos"
         assert resp.street == "Ruth Bloen Souto"
