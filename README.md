@@ -1,4 +1,4 @@
-### Digipix Consulta CEP [![CircleCI](https://circleci.com/gh/alvaropaco/zipcode-challenge-digipix/tree/master.svg?style=svg)](https://circleci.com/gh/alvaropaco/zipcode-challenge-digipix/tree/master)
+### Digipix Consulta CEP [![CircleCI](https://circleci.com/gh/alvaropaco/zipcode-challenge-digipix/tree/master.svg?style=svg)](https://circleci.com/gh/alvaropaco/zipcode-challenge-digipix/tree/master) [![Maintainability](https://api.codeclimate.com/v1/badges/2b563ddda88e6479022c/maintainability)](https://codeclimate.com/github/alvaropaco/zipcode-challenge-digipix/maintainability)
 
 O Objetivo deste projet e realizar a consulta atraves da API da Digipix a um CEP requisitado.
 
